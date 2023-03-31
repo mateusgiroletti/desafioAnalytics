@@ -1,6 +1,14 @@
+import Aside from "./components/Aside";
+import Main from "./components/Main";
+import Nav from "./components/Nav";
+
 function App() {
     return (
-        <h1>Teste</h1>
+        <div className="main-container">
+            <Aside />
+            <Main />
+            <Nav />
+        </div>
     );
 }
 
