@@ -14,6 +14,16 @@ body {
     background: var(--background-color-main);
 }
 
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #979797;
+    border-radius: 10px;
+}
+
 body,
 input,
 textarea,
@@ -25,7 +35,7 @@ button {
     cursor: pointer;
 }
 
-.main-container{
+.main-container {
     display: flex;
     justify-content: space-between;
     height: 100vh;

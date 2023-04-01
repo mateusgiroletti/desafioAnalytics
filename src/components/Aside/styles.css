@@ -1,5 +1,5 @@
 aside {
-    max-width: 20rem;
+    max-width: 22rem;
     background-color: #eceff5;
 }
 
@@ -31,5 +31,104 @@ aside {
     justify-content: center;
     border-right: 3px solid #dbdfe6;
     height: 3rem;
-    width: 15.5rem;
+    width: 15rem;
 }
+
+.history-result {
+    width: 22rem;
+}
+
+.history-result ul {
+    height: 85vh;
+    list-style: none;
+    overflow-y: auto;
+}
+
+.history-result ul li {
+    display: flex;
+    align-items: center;
+}
+
+.history-result ul > li:nth-of-type(odd) {
+    background-color: #dbdfe6 ;
+}
+
+.correct-choice {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+
+.correct-choice .correct-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 12rem;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.correct-choice .score-time {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.correct-choice .score-time span {
+    margin-left: 0.5rem;
+}
+
+.wrong-choice {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+
+.wrong-choice .choice-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 5rem;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.wrong-choice .score-time {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.wrong-choice .score-time span {
+    margin-left: 0.5rem;
+}
+
+
+/* .wrong-choice {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrong-choice div {
+    width: 5rem;
+    height: 3.5rem;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.color-correct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 3.5rem;
+    border-radius: 10px;
+    color: #fff;
+} */
