@@ -1,0 +1,35 @@
+aside {
+    max-width: 20rem;
+    background-color: #eceff5;
+}
+
+.aside-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.aside-header h1 {
+    color: #48525d;
+    font-weight: bold;
+}
+
+.history-information {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #48525d;
+    border-top: 3px solid #dbdfe6;
+    margin-left: 2px;
+}
+
+.history-information div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid #dbdfe6;
+    height: 3rem;
+    width: 15.5rem;
+}
