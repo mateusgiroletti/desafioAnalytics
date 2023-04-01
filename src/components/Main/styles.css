@@ -1,7 +1,114 @@
-main{
+main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    background-color: blue;
+}
+
+.title {
+    margin-bottom: 5rem;
+}
+
+.title h1 {
+    color: #48525d;
+    font-weight: bold;
+}
+
+.main-informations {
+    display: flex;
+    align-items: center;
+    width: 25rem;
+    height: 6rem;
+    margin-bottom: 2rem;
+    background-color: #e5e9f1;
+    border: 2px solid #979fa9;
+    border-radius: 10px;
+}
+
+.main-informations .remaning-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-informations .remaning-time span {
+    color: #687481;
+    font-weight: bold;
+}
+
+.main-informations .remaning-time span:first-child {
+    padding-bottom: 1rem;
+}
+
+.main-informations .button-restart {
+    height: 100%;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #aab1bb;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.main-informations .button-restart:hover {
+    filter: brightness(0.8);
+}
+
+.main-informations .score-information {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-informations .score-information .high-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-informations .score-information .high-score span:first-child {
+    max-width: 5rem;
+}
+
+/* .main-informations .score-information div:first-child {
+    border-bottom: 2px solid #979fa9;
+} */
+
+
+/* .main-informations .score-information .high-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #a0a7b0;
+}
+
+.main-informations .score-information .high-score span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    font-weight: bold;
+    color: #687481;
+} */
+
+
+
+
+.select-color {
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+}
+
+.select-color .time-bar {
+    height: 0.5rem;
+    background: #a0a7b0;
+}
+
+.select-color .color-to-guess {
+    height: 25rem;
 }
