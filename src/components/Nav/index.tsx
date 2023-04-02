@@ -3,7 +3,10 @@ import "./styles.css";
 function Nav() {
     return (
         <nav>
-            Nav
+            <div className="setting">
+                <button>Reset All Data</button>
+                <button>Change Nickname</button>
+            </div>
         </nav>
     );
 }
