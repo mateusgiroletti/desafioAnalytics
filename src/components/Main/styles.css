@@ -3,7 +3,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 60vw;
 }
 
 .title {
@@ -105,16 +105,27 @@ main {
     height: 25rem;
 }
 
-.color-options{
+.color-options {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: #687481;
+    font-weight: bold;
+    max-width: 25rem;
+}
+
+.color-options .button-option {
+    width: 5rem;
+    height: 3rem;
     border: 2px solid #687481;
     border-radius: 10px;
-    margin-top: 1rem;
     color: #687481;
     font-weight: bold;
 }
 
-.color-options .option{
-    margin: 1rem;
+.color-options .button-option:hover {
+    filter: brightness(0.8);
 }
