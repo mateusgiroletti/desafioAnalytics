@@ -31,6 +31,8 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 80px;
+    margin: 2rem;
 }
 
 .main-informations .remaning-time span {
@@ -62,41 +64,31 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    color: #687481;
+    font-weight: bold;
 }
 
 .main-informations .score-information .high-score {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 2px solid #979fa9;
 }
 
-.main-informations .score-information .high-score span:first-child {
+.main-informations .score-information .high-score span {
     max-width: 5rem;
 }
 
-/* .main-informations .score-information div:first-child {
-    border-bottom: 2px solid #979fa9;
-} */
-
-
-/* .main-informations .score-information .high-score {
+.main-informations .score-information .score {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-bottom: 2px solid #a0a7b0;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
 
-.main-informations .score-information .high-score span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 5rem;
-    font-weight: bold;
-    color: #687481;
-} */
-
-
-
+.main-informations .score-information .score :nth-child(2) {
+    margin-left: 2rem;
+}
 
 .select-color {
     display: flex;
@@ -111,4 +103,18 @@ main {
 
 .select-color .color-to-guess {
     height: 25rem;
+}
+
+.color-options{
+    display: flex;
+    align-items: center;
+    border: 2px solid #687481;
+    border-radius: 10px;
+    margin-top: 1rem;
+    color: #687481;
+    font-weight: bold;
+}
+
+.color-options .option{
+    margin: 1rem;
 }
