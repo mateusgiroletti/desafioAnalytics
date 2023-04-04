@@ -98,7 +98,7 @@ main {
 
 .select-color .time-bar {
     height: 0.5rem;
-    background: #a0a7b0;
+    background: #e5e9f1;
 }
 
 .select-color .color-to-guess {
@@ -108,7 +108,13 @@ main {
     justify-content: center;
 }
 
+.select-color .color-to-guess .color {
+    height: 100%;
+    width: 100%;
+}
+
 .select-color .color-to-guess .button-start {
+    position: absolute;
     width: 10rem;
     height: 3rem;
     border: 2px solid #687481;
@@ -140,6 +146,7 @@ main {
     border-radius: 10px;
     color: #687481;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .color-options .button-option:hover {

@@ -1,16 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 function Main() {
-    const [colors, setColors] = useState([{}]);
-    const [timer, setTimer] = useState(2);
+    const [colors, setColors] = useState([]);
+    const [timer, setTimer] = useState(5);
+    const [filled, setFilled] = useState(100);
+    const [isRunning, setIsRunning] = useState(false);
 
-    function startGame() {
-        setInterval(() => {
-            setTimer(timer => timer - 1);
 
-        }, 1000);
+    useEffect(() => {
+        if (isRunning) {
+            if (timer > 0) {
+                setTimeout(() => {
+                    setTimer(prev => prev -= 1);
+                    setFilled(prev => prev -= 20);
+                }, 1000);
+            }
 
+            if (timer === 0) {
+                setTimeout(() => {
+                    setTimer(5);
+                    setFilled(100);
+                    generateColors();
+                }, 1000);
+            }
+        }
+
+
+    }, [timer, isRunning]);
+
+    function handleTimer() {
+        setIsRunning(true);
+        generateColors();
     }
 
     function generateColors() {
@@ -29,7 +50,23 @@ function Main() {
             });
 
         }
+
+        console.log(colorsArray);
+
         setColors(colorsArray);
+    }
+
+    function getCorrectColor() {
+        const correctColor = colors.find(color => color.correct);
+
+        return correctColor?.hex;
+    }
+
+    function verificColor(color) {
+        if (color.correct) {
+            return alert("acertou");
+        }
+        return alert("errouuu");
     }
 
     return (
@@ -60,12 +97,29 @@ function Main() {
 
             <div className="select-color">
                 <div className="time-bar">
+                    <div style={{
+                        height: "100%",
+                        width: `${filled}%`,
+                        backgroundColor: "#a0a7b0",
+                        transition: "width 1s"
+                    }}>
+
+                    </div>
                 </div>
 
-                <div className="color-to-guess" style={{ background: "#f9bc6b" }} >
+
+                <div className="color-to-guess" >
+                    <div className="color" style={
+                        isRunning ?
+                            { opacity: "1", background: `#${getCorrectColor()}` } :
+                            { opacity: "0.5", background: "#f9bc6b" }
+                    }></div>
                     <button
                         className="button-start"
-                        onClick={() => startGame()}
+                        style={
+                            isRunning ? { display: "none" } : { display: "block" }
+                        }
+                        onClick={() => handleTimer()}
                     >
                         Start
                     </button>
@@ -73,13 +127,21 @@ function Main() {
 
             </div>
 
-            <div className="color-options">
-                <button className="button-option">#FFBA5C</button>
-                <button className="button-option">#976DD0</button>
-                <button className="button-option">#FDE0AF</button>
-                <button className="button-option">#976DD0</button>
-                <button className="button-option">#FDE0AF</button>
-            </div>
+            {
+                colors &&
+                (
+                    <div className="color-options">
+                        {
+                            colors.map((color) => {
+                                return (
+                                    <button key={color.hex} className="button-option" onClick={() => verificColor(color)}>#{color.hex}</button>
+                                );
+                            })
+                        }
+
+                    </div>
+                )
+            }
 
         </main>
     );
