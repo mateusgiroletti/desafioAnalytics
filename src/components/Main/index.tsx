@@ -3,29 +3,35 @@ import "./styles.css";
 
 function Main() {
     const [colors, setColors] = useState([]);
-    const [timer, setTimer] = useState(5);
+    const [timer, setTimer] = useState(30);
     const [filled, setFilled] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
-
+    const [historic, setHistoric] = useState([]);
+    const [score, setScore] = useState(0);
+    const [highScore, setHighScore] = useState(0);
 
     useEffect(() => {
         if (isRunning) {
             if (timer > 0) {
                 setTimeout(() => {
                     setTimer(prev => prev -= 1);
-                    setFilled(prev => prev -= 20);
+                    setFilled(prev => prev -= 3.33);
                 }, 1000);
             }
 
             if (timer === 0) {
+                setScore(prev => prev -= 2);
                 setTimeout(() => {
-                    setTimer(5);
+                    setTimer(30);
                     setFilled(100);
                     generateColors();
                 }, 1000);
             }
+        } else {
+            setTimer(30);
+            setFilled(100);
+            setScore(0);
         }
-
 
     }, [timer, isRunning]);
 
@@ -51,8 +57,6 @@ function Main() {
 
         }
 
-        console.log(colorsArray);
-
         setColors(colorsArray);
     }
 
@@ -62,11 +66,33 @@ function Main() {
         return correctColor?.hex;
     }
 
-    function verificColor(color) {
+    function checkColor(color) {
+       
         if (color.correct) {
-            return alert("acertou");
+            console.log("acertou");
+            setScore(prev => prev += 5);
+
+            if (score > highScore) {
+                setHighScore(score);
+            }
+
+        } else {
+            console.log("errou");
+            setScore(prev => prev -= 1);
         }
-        return alert("errouuu");
+
+        const newHistoric = {
+            "guessedColor": color.hex,
+            "correctColor": color.correct ? color.hex : getCorrectColor(),
+            "timeScore": 30 - timer
+        };
+
+        setHistoric([...historic, newHistoric]);
+
+    }
+
+    function restarGame() {
+        setIsRunning(false);
     }
 
     return (
@@ -81,16 +107,16 @@ function Main() {
                     <span>{timer}</span>
                 </div>
 
-                <button className="button-restart">RESTART</button>
+                <button className="button-restart" onClick={() => restarGame()}>RESTART</button>
 
                 <div className="score-information">
                     <div className="high-score">
                         <span>HIGH SCORE</span>
-                        <span>13</span>
+                        <span>{highScore}</span>
                     </div>
                     <div className="score">
                         <span>SCORE</span>
-                        <span>12</span>
+                        <span>{score}</span>
                     </div>
                 </div>
             </div>
@@ -112,7 +138,7 @@ function Main() {
                     <div className="color" style={
                         isRunning ?
                             { opacity: "1", background: `#${getCorrectColor()}` } :
-                            { opacity: "0.5", background: "#f9bc6b" }
+                            { opacity: "0.30", background: "#f9bc6b" }
                     }></div>
                     <button
                         className="button-start"
@@ -128,13 +154,13 @@ function Main() {
             </div>
 
             {
-                colors &&
+                isRunning &&
                 (
                     <div className="color-options">
                         {
                             colors.map((color) => {
                                 return (
-                                    <button key={color.hex} className="button-option" onClick={() => verificColor(color)}>#{color.hex}</button>
+                                    <button key={color.hex} className="button-option" onClick={() => checkColor(color)}>#{color.hex}</button>
                                 );
                             })
                         }
