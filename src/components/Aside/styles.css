@@ -53,6 +53,10 @@ aside {
     background-color: #dbdfe6 ;
 }
 
+.history-result span{
+    text-transform: uppercase;
+}
+
 .correct-choice {
     display: flex;
     align-items: center;

@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./styles.css";
+import { GameContext } from "../../contexts/gameContext";
 
 function Main() {
     const [colors, setColors] = useState([]);
     const [timer, setTimer] = useState(5);
     const [filled, setFilled] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
-    const [historic, setHistoric] = useState([]);
     const [score, setScore] = useState(0);
-    const [highScore, setHighScore] = useState(0);
-    
+
+    const { historic, setHistoric, highScore, setHighScore } = useContext(GameContext);
+
     useEffect(() => {
         let intervalId;
         if (isRunning) {
@@ -19,8 +20,9 @@ function Main() {
                     setFilled(prev => prev -= 3.33);
                 }, 1000);
             }
-            
+
             if (timer === 0) {
+                setScore(prev => prev -= 2);
                 clearInterval(intervalId);
                 intervalId = setInterval(() => {
                     setTimer(5);
@@ -30,34 +32,7 @@ function Main() {
             }
 
         }
-        /*  if (isRunning) {
-            if (timer > 0) {
-                setTimeout(() => {
-                    setTimer(prev => prev -= 1);
-                    setFilled(prev => prev -= 3.33);
-                }, 1000);
-            }
 
-            if (timer === 0) {
-                setScore(prev => prev -= 2);
-                setTimeout(() => {
-                    setTimer(30);
-                    setFilled(100);
-                    generateColors();
-                }, 1000);
-            }
-        } else {
-            setTimer(30);
-            setFilled(100);
-            setScore(0);
-        } */
-
-        /*  if (!timer) return;
- 
-         const intervalId = setInterval(() => {
-             setTimer(timer - 1);
-         }, 1000);
-  */
         return () => clearInterval(intervalId);
 
     }, [timer, isRunning]);
@@ -113,7 +88,7 @@ function Main() {
             "timeScore": 30 - timer
         };
 
-        setHistoric([...historic, newHistoric]);
+        setHistoric([newHistoric, ...historic]);
         setTimer(0);
     }
 
