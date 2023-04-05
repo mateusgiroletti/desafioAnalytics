@@ -3,15 +3,34 @@ import "./styles.css";
 
 function Main() {
     const [colors, setColors] = useState([]);
-    const [timer, setTimer] = useState(30);
+    const [timer, setTimer] = useState(5);
     const [filled, setFilled] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
     const [historic, setHistoric] = useState([]);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
-
+    
     useEffect(() => {
+        let intervalId;
         if (isRunning) {
+            if (timer > 0) {
+                intervalId = setInterval(() => {
+                    setTimer(prev => prev -= 1);
+                    setFilled(prev => prev -= 3.33);
+                }, 1000);
+            }
+            
+            if (timer === 0) {
+                clearInterval(intervalId);
+                intervalId = setInterval(() => {
+                    setTimer(5);
+                    setFilled(100);
+                    generateColors();
+                }, 1000);
+            }
+
+        }
+        /*  if (isRunning) {
             if (timer > 0) {
                 setTimeout(() => {
                     setTimer(prev => prev -= 1);
@@ -31,7 +50,15 @@ function Main() {
             setTimer(30);
             setFilled(100);
             setScore(0);
-        }
+        } */
+
+        /*  if (!timer) return;
+ 
+         const intervalId = setInterval(() => {
+             setTimer(timer - 1);
+         }, 1000);
+  */
+        return () => clearInterval(intervalId);
 
     }, [timer, isRunning]);
 
@@ -67,7 +94,6 @@ function Main() {
     }
 
     function checkColor(color) {
-       
         if (color.correct) {
             console.log("acertou");
             setScore(prev => prev += 5);
@@ -88,11 +114,14 @@ function Main() {
         };
 
         setHistoric([...historic, newHistoric]);
-
+        setTimer(0);
     }
 
     function restarGame() {
         setIsRunning(false);
+        setTimer(5);
+        setFilled(100);
+        setScore(0);
     }
 
     return (
