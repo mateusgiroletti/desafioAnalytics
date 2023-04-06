@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
-const TIME_GAME = 30;
+const TIME_GAME = 5;
 
 function Main() {
     const [colors, setColors] = useState([]);
@@ -26,8 +26,10 @@ function Main() {
             }
 
             if (timer === 0) {
-                setDisabledButton(true);
-                setScore(prev => prev -= 2);
+                if (!disabledButton) {
+                    setDisabledButton(true);
+                    setScore(prev => prev -= 2);
+                }
 
                 intervalId = setInterval(() => {
                     setTimer(TIME_GAME);
@@ -67,7 +69,7 @@ function Main() {
 
         }
 
-        colorsArray.sort(() => Math.random() - 0.5);
+        // colorsArray.sort(() => Math.random() - 0.5);
 
         setColors(colorsArray);
     }
@@ -83,12 +85,12 @@ function Main() {
 
         if (color.correct) {
             console.log("acertou");
+
             setScore(prev => prev += 5);
 
             if (score > highScore) {
                 setHighScore(score);
             }
-
         } else {
             console.log("errou");
             setScore(prev => prev -= 1);
