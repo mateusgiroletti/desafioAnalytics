@@ -2,14 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
+const TIME_GAME = 30;
+
 function Main() {
     const [colors, setColors] = useState([]);
-    const [timer, setTimer] = useState(5);
+    const [timer, setTimer] = useState(TIME_GAME);
     const [filled, setFilled] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
     const [score, setScore] = useState(0);
+    const [disabledButton, setDisabledButton] = useState(false);
 
-    const { historic, setHistoric, highScore, setHighScore } = useContext(GameContext);
+    const { historic, setHistoric, highScore, setHighScore, resetHistoric } = useContext(GameContext);
 
     useEffect(() => {
         let intervalId;
@@ -22,12 +25,14 @@ function Main() {
             }
 
             if (timer === 0) {
+                setDisabledButton(true);
                 setScore(prev => prev -= 2);
                 clearInterval(intervalId);
                 intervalId = setInterval(() => {
-                    setTimer(5);
+                    setTimer(TIME_GAME);
                     setFilled(100);
                     generateColors();
+                    setDisabledButton(false);
                 }, 1000);
             }
 
@@ -37,21 +42,23 @@ function Main() {
 
     }, [timer, isRunning]);
 
-    function handleTimer() {
+    function startGame() {
         setIsRunning(true);
+        setDisabledButton(false);
         generateColors();
+        resetHistoric();
     }
 
     function generateColors() {
         const colorsArray = [];
-        const correctColor = Math.floor(Math.random() * 16777215).toString(16);
+        const correctColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
         colorsArray.push({
             "hex": correctColor,
             "correct": true
         });
 
         for (let index = 0; index < 2; index++) {
-            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
             colorsArray.push({
                 "hex": randomColor,
                 "correct": false
@@ -68,7 +75,9 @@ function Main() {
         return correctColor?.hex;
     }
 
-    function checkColor(color) {
+    function checkAnswer(color) {
+        setDisabledButton(true);
+
         if (color.correct) {
             console.log("acertou");
             setScore(prev => prev += 5);
@@ -90,13 +99,15 @@ function Main() {
 
         setHistoric([newHistoric, ...historic]);
         setTimer(0);
+
     }
 
     function restarGame() {
         setIsRunning(false);
-        setTimer(5);
+        setTimer(TIME_GAME);
         setFilled(100);
         setScore(0);
+        setDisabledButton(true);
     }
 
     return (
@@ -149,7 +160,7 @@ function Main() {
                         style={
                             isRunning ? { display: "none" } : { display: "block" }
                         }
-                        onClick={() => handleTimer()}
+                        onClick={() => startGame()}
                     >
                         Start
                     </button>
@@ -158,13 +169,20 @@ function Main() {
             </div>
 
             {
-                isRunning &&
+                !disabledButton &&
                 (
                     <div className="color-options">
                         {
                             colors.map((color) => {
                                 return (
-                                    <button key={color.hex} className="button-option" onClick={() => checkColor(color)}>#{color.hex}</button>
+                                    <button
+                                        key={color.hex}
+                                        className="button-option"
+                                        onClick={() => checkAnswer(color)}
+                                        disabled={disabledButton}
+                                    >
+                                        #{color.hex}
+                                    </button>
                                 );
                             })
                         }

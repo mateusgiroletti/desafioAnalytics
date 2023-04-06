@@ -44,7 +44,7 @@ function Aside() {
 
                                                         <div className="score-time">
                                                             <CheckCircle size={32} weight="duotone" color="#96c482" />
-                                                            <span>{`${30 - histo.timeScore}`}s</span>
+                                                            <span>{`${histo.timeScore}`}s</span>
                                                         </div>
                                                     </div>
                                                 ) : (
@@ -59,7 +59,7 @@ function Aside() {
 
                                                         <div className="score-time">
                                                             <XCircle size={32} weight="duotone" color="#ec9090" />
-                                                            <span>{`${30 - histo.timeScore}`}s</span>
+                                                            <span>{`${histo.timeScore}`}s</span>
                                                         </div>
                                                     </div>
                                                 )

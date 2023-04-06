@@ -29,6 +29,15 @@ export function GameProvider({ children }: GameProviderProps) {
         0
     );
 
+    const [nickname, setNickname] = useLocalStorage<string>(
+        "nickname",
+        ""
+    );
+
+    function resetHistoric() {
+        setHistoric([]);
+    }
+
     function resetAllData() {
         setHistoric([]);
         setHighScore(0);
@@ -37,7 +46,7 @@ export function GameProvider({ children }: GameProviderProps) {
     return (
         <GameContext.Provider value={
             {
-                setHistoric, historic, resetAllData, highScore, setHighScore
+                setHistoric, historic, resetAllData, highScore, setHighScore, resetHistoric, nickname, setNickname
             }
         }>
             {children}
