@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type GameProviderProps = {
@@ -34,6 +34,9 @@ export function GameProvider({ children }: GameProviderProps) {
         ""
     );
 
+    const [modal, setModal] = useState(false);
+
+
     function resetHistoric() {
         setHistoric([]);
     }
@@ -46,7 +49,16 @@ export function GameProvider({ children }: GameProviderProps) {
     return (
         <GameContext.Provider value={
             {
-                setHistoric, historic, resetAllData, highScore, setHighScore, resetHistoric, nickname, setNickname
+                setHistoric,
+                historic,
+                resetAllData,
+                highScore,
+                setHighScore,
+                resetHistoric,
+                nickname,
+                setNickname,
+                modal,
+                setModal
             }
         }>
             {children}
