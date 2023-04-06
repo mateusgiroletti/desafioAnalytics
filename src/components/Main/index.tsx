@@ -15,7 +15,8 @@ function Main() {
     const { historic, setHistoric, highScore, setHighScore, resetHistoric } = useContext(GameContext);
 
     useEffect(() => {
-        let intervalId;
+        let intervalId: number;
+
         if (isRunning) {
             if (timer > 0) {
                 intervalId = setInterval(() => {
@@ -27,7 +28,7 @@ function Main() {
             if (timer === 0) {
                 setDisabledButton(true);
                 setScore(prev => prev -= 2);
-                clearInterval(intervalId);
+
                 intervalId = setInterval(() => {
                     setTimer(TIME_GAME);
                     setFilled(100);
@@ -65,6 +66,8 @@ function Main() {
             });
 
         }
+
+        colorsArray.sort(() => Math.random() - 0.5);
 
         setColors(colorsArray);
     }
