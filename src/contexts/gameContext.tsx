@@ -7,7 +7,15 @@ type GameProviderProps = {
 
 type GameContextData = {
     historic: HistoricItem[];
-    resetAllData: () => void
+    highScore: number;
+    nickname: string;
+    modal: boolean;
+    resetAllData: () => void;
+    resetHistoric: () => void;
+    toggleModal: () => void;
+    handleNickname: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setHistoric: () => void;
+    setHighScore: () => void;
 }
 
 type HistoricItem = {
@@ -36,6 +44,9 @@ export function GameProvider({ children }: GameProviderProps) {
 
     const [modal, setModal] = useState(false);
 
+    function handleNickname(e: React.ChangeEvent<HTMLInputElement>) {
+        setNickname(e.target.value);
+    }
 
     function resetHistoric() {
         setHistoric([]);
@@ -44,6 +55,10 @@ export function GameProvider({ children }: GameProviderProps) {
     function resetAllData() {
         setHistoric([]);
         setHighScore(0);
+    }
+
+    function toggleModal() {
+        setModal(!modal);
     }
 
     return (
@@ -56,9 +71,9 @@ export function GameProvider({ children }: GameProviderProps) {
                 setHighScore,
                 resetHistoric,
                 nickname,
-                setNickname,
+                handleNickname,
                 modal,
-                setModal
+                toggleModal
             }
         }>
             {children}

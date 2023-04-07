@@ -13,7 +13,7 @@ function App() {
                 <Nav />
             </div>
 
-            <Modal open={true} />
+            <Modal />
 
         </GameProvider>
     );
