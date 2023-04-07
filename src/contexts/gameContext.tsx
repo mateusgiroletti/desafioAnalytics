@@ -10,12 +10,14 @@ type GameContextData = {
     highScore: number;
     nickname: string;
     modal: boolean;
+    levelGame: string;
     resetAllData: () => void;
     resetHistoric: () => void;
     toggleModal: () => void;
     handleNickname: (e: React.ChangeEvent<HTMLInputElement>) => void;
     setHistoric: () => void;
     setHighScore: () => void;
+    setLevelGame: () => void;
 }
 
 type HistoricItem = {

@@ -3,7 +3,7 @@ import { GameContext } from "../../contexts/gameContext";
 
 import "./styles.css";
 
-const TIME_GAME = 5;
+const TIME_GAME = 30;
 
 type ColorProps = {
     hex: string;
@@ -72,7 +72,6 @@ function Main() {
                 "hex": randomColor,
                 "correct": false
             });
-
         }
 
         colorsArray.sort(() => Math.random() - 0.5);

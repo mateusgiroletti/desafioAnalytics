@@ -1,10 +1,16 @@
 import { useContext } from "react";
 import ReactDOM from "react-dom";
 
-import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
-function Modal({ children, modalTitle }) {
+import "./styles.css";
+
+type ModalProps = {
+    children: JSX.Element;
+    modalTitle: string;
+}
+
+function Modal({ children, modalTitle }: ModalProps) {
     const { modal, toggleModal } = useContext(GameContext);
 
     return ReactDOM.createPortal(
