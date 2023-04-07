@@ -3,13 +3,13 @@ import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
 function Nav() {
-    const { resetAllData } = useContext(GameContext);
+    const { resetAllData, toggleModal } = useContext(GameContext);
 
     return (
         <nav>
             <div className="setting">
                 <button onClick={() => resetAllData()}>Reset All Data</button>
-                <button>Change Nickname</button>
+                <button onClick={() => toggleModal()}>Change Nickname</button>
             </div>
         </nav>
     );

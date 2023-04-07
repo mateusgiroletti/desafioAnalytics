@@ -1,35 +1,38 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
-function Modal(props) {
-    const { modal, setModal } = useContext(GameContext);
-
-    useEffect(() => {
-        console.log(props);
-        if (props.open) {
-            setModal(true);
-        }
-    }, []);
-
-    const toggleModal = () => {
-        setModal(!modal);
-    };
+function Modal() {
+    const { modal, nickname, handleNickname, toggleModal } = useContext(GameContext);
 
     return ReactDOM.createPortal(
         <>
             <div
                 className="modal"
                 id="my-modal"
-                style={modal ? { display: "block" } : { display: "none" }}>
+                style={modal ? { display: "block" } : { display: "none" }}
+            >
                 <div onClick={toggleModal} className="overlay"></div>
-                <div className="modal-content">
-                    <label htmlFor="nickname">Insert your nickname:</label>
-                    <input type="text" id="nickname" />
+                <div className="modal-container">
+                    <div className="modal-title">
+                        <h2>Insert Your Nickname</h2>
+                    </div>
+                    <div className="modal-content">
+                        <div>
+                            <label htmlFor="nickname">Nickname</label>
+                            <input
+                                type="text"
+                                id="nickname"
+                                placeholder="Input your nickname"
+                                value={nickname}
+                                onChange={(e) => handleNickname(e)}
+                            />
+                        </div>
 
-                    <button>Save</button>
+                        <button onClick={() => toggleModal()}>Save</button>
+                    </div>
                 </div>
             </div>
         </>,

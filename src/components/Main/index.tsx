@@ -1,20 +1,30 @@
 import { useContext, useEffect, useState } from "react";
-import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
+
+import "./styles.css";
 
 const TIME_GAME = 5;
 
+type ColorProps = {
+    hex: string;
+    correct: boolean;
+}
+
 function Main() {
-    const [colors, setColors] = useState([]);
+    const [colors, setColors] = useState<ColorProps[]>([]);
     const [timer, setTimer] = useState(TIME_GAME);
     const [filled, setFilled] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
     const [score, setScore] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
 
-    const { historic, setHistoric, highScore, setHighScore, resetHistoric } = useContext(GameContext);
+    const { historic, setHistoric, highScore, setHighScore, resetHistoric, nickname, toggleModal } = useContext(GameContext);
 
     useEffect(() => {
+        if (!nickname) {
+            toggleModal();
+        }
+
         let intervalId: number;
 
         if (isRunning) {
@@ -53,7 +63,7 @@ function Main() {
     }
 
     function generateColors() {
-        const colorsArray = [];
+        const colorsArray: Array<ColorProps> = [];
         const correctColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
         colorsArray.push({
             "hex": correctColor,
@@ -69,7 +79,7 @@ function Main() {
 
         }
 
-        // colorsArray.sort(() => Math.random() - 0.5);
+        colorsArray.sort(() => Math.random() - 0.5);
 
         setColors(colorsArray);
     }
@@ -80,7 +90,7 @@ function Main() {
         return correctColor?.hex;
     }
 
-    function checkAnswer(color) {
+    function checkAnswer(color: ColorProps) {
         setDisabledButton(true);
 
         if (color.correct) {
@@ -104,7 +114,6 @@ function Main() {
 
         setHistoric([newHistoric, ...historic]);
         setTimer(0);
-
     }
 
     function restarGame() {
@@ -173,28 +182,25 @@ function Main() {
 
             </div>
 
-            {
-                !disabledButton &&
-                (
-                    <div className="color-options">
-                        {
-                            colors.map((color) => {
-                                return (
-                                    <button
-                                        key={color.hex}
-                                        className="button-option"
-                                        onClick={() => checkAnswer(color)}
-                                        disabled={disabledButton}
-                                    >
-                                        #{color.hex}
-                                    </button>
-                                );
-                            })
-                        }
+            {!disabledButton && (
+                <div className="color-options">
+                    {
+                        colors.map((color) => {
+                            return (
+                                <button
+                                    key={color.hex}
+                                    className="button-option"
+                                    onClick={() => checkAnswer(color)}
+                                    disabled={disabledButton}
+                                >
+                                    #{color.hex}
+                                </button>
+                            );
+                        })
+                    }
 
-                    </div>
-                )
-            }
+                </div>
+            )}
 
         </main>
     );
