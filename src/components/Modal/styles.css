@@ -61,6 +61,26 @@
     border-radius: 0.5rem;
 }
 
+.modal-content .select-level-game {
+    margin-bottom: 1rem;
+}
+
+.modal-content .select-level-game select {
+    width: 10rem;
+    padding: 0.5rem;
+    border: 2px solid #687481;
+    border-radius: 5px;
+    color: #687481;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.modal-content .select-level-game select option {
+    color: #687481;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 .modal-content button {
     display: flex;
     align-items: center;

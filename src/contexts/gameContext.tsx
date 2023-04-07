@@ -42,6 +42,11 @@ export function GameProvider({ children }: GameProviderProps) {
         ""
     );
 
+    const [levelGame, setLevelGame] = useLocalStorage<string>(
+        "level_game",
+        "2"
+    );
+
     const [modal, setModal] = useState(false);
 
     function handleNickname(e: React.ChangeEvent<HTMLInputElement>) {
@@ -73,7 +78,9 @@ export function GameProvider({ children }: GameProviderProps) {
                 nickname,
                 handleNickname,
                 modal,
-                toggleModal
+                toggleModal,
+                levelGame,
+                setLevelGame
             }
         }>
             {children}

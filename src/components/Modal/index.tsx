@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
 
-function Modal() {
-    const { modal, nickname, handleNickname, toggleModal } = useContext(GameContext);
+function Modal({ children, modalTitle }) {
+    const { modal, toggleModal } = useContext(GameContext);
 
     return ReactDOM.createPortal(
         <>
@@ -17,20 +17,10 @@ function Modal() {
                 <div onClick={toggleModal} className="overlay"></div>
                 <div className="modal-container">
                     <div className="modal-title">
-                        <h2>Insert Your Nickname</h2>
+                        <h2>{modalTitle}</h2>
                     </div>
                     <div className="modal-content">
-                        <div>
-                            <label htmlFor="nickname">Nickname</label>
-                            <input
-                                type="text"
-                                id="nickname"
-                                placeholder="Input your nickname"
-                                value={nickname}
-                                onChange={(e) => handleNickname(e)}
-                            />
-                        </div>
-
+                        {children}
                         <button onClick={() => toggleModal()}>Save</button>
                     </div>
                 </div>

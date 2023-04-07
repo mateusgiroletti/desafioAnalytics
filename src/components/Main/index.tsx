@@ -18,13 +18,9 @@ function Main() {
     const [score, setScore] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
 
-    const { historic, setHistoric, highScore, setHighScore, resetHistoric, nickname, toggleModal } = useContext(GameContext);
+    const { historic, setHistoric, highScore, setHighScore, resetHistoric, levelGame } = useContext(GameContext);
 
     useEffect(() => {
-        if (!nickname) {
-            toggleModal();
-        }
-
         let intervalId: number;
 
         if (isRunning) {
@@ -70,7 +66,7 @@ function Main() {
             "correct": true
         });
 
-        for (let index = 0; index < 2; index++) {
+        for (let index = 0; index < levelGame; index++) {
             const randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
             colorsArray.push({
                 "hex": randomColor,
@@ -203,6 +199,7 @@ function Main() {
             )}
 
         </main>
+
     );
 }
 
