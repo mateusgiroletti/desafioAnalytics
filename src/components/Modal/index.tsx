@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
 import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
@@ -17,7 +18,7 @@ function Modal(props) {
         setModal(!modal);
     };
 
-    return (
+    return ReactDOM.createPortal(
         <>
             <div
                 className="modal"
@@ -25,13 +26,14 @@ function Modal(props) {
                 style={modal ? { display: "block" } : { display: "none" }}>
                 <div onClick={toggleModal} className="overlay"></div>
                 <div className="modal-content">
-                    <label htmlFor="nickname">Inssert your nickname:</label>
+                    <label htmlFor="nickname">Insert your nickname:</label>
                     <input type="text" id="nickname" />
 
                     <button>Save</button>
                 </div>
             </div>
-        </>
+        </>,
+        document.getElementById("modal-root") as Element
     );
 }
 
