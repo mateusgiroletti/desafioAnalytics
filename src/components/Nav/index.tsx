@@ -10,6 +10,7 @@ function Nav() {
             <div className="setting">
                 <button onClick={() => resetAllData()}>Reset All Data</button>
                 <button onClick={() => toggleModal()}>Change Nickname</button>
+                <button onClick={() => toggleModal()}>Change Level</button>
             </div>
         </nav>
     );

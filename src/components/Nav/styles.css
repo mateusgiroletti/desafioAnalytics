@@ -4,6 +4,9 @@ nav {
 
 nav .setting {
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
     position: absolute;
     bottom: 1rem;
 }
@@ -11,14 +14,14 @@ nav .setting {
 nav .setting button {
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 3rem;
+    max-width: 6rem;
     border: 2px solid #687481;
     border-radius: 10px;
     color: #687481;
     font-weight: bold;
     margin: 1rem;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 nav .setting button:hover {
