@@ -18,7 +18,7 @@ function Main() {
     const [score, setScore] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
 
-    const { historic, setHistoric, highScore, setHighScore, resetHistoric, levelGame } = useContext(GameContext);
+    const { historic, setHistoric, highScore, setHighScore, resetHistoric, levelGame, nickname } = useContext(GameContext);
 
     useEffect(() => {
         let intervalId: ReturnType<typeof setInterval>;
@@ -89,22 +89,20 @@ function Main() {
         setDisabledButton(true);
 
         if (color.correct) {
-            console.log("acertou");
-
             setScore(prev => prev += 5);
 
             if (score > highScore) {
                 setHighScore(score);
             }
         } else {
-            console.log("errou");
             setScore(prev => prev -= 1);
         }
 
         const newHistoric = {
             "guessedColor": color.hex,
             "correctColor": color.correct ? color.hex : getCorrectColor(),
-            "timeScore": 30 - timer
+            "timeScore": 30 - timer,
+            "player": nickname ?? null
         };
 
         setHistoric([newHistoric, ...historic]);

@@ -33,6 +33,7 @@ function Nav() {
                                 placeholder="Input your nickname"
                                 value={nickname}
                                 onChange={(e) => handleNickname(e)}
+                                maxLength={9}
                             />
                         </div>
                     </Modal >

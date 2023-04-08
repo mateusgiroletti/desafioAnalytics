@@ -24,6 +24,10 @@ function Aside() {
                 <div>
                     <span>Score</span>
                 </div>
+
+                <div>
+                    <span>Player</span>
+                </div>
             </div>
 
             {
@@ -46,6 +50,10 @@ function Aside() {
                                                             <CheckCircle size={32} weight="duotone" color="#96c482" />
                                                             <span>{`${histo.timeScore}`}s</span>
                                                         </div>
+
+                                                        <div className="player-info">
+                                                            {histo.player}
+                                                        </div>
                                                     </div>
                                                 ) : (
                                                     <div className="wrong-choice">
@@ -60,6 +68,10 @@ function Aside() {
                                                         <div className="score-time">
                                                             <XCircle size={32} weight="duotone" color="#ec9090" />
                                                             <span>{`${histo.timeScore}`}s</span>
+                                                        </div>
+
+                                                        <div className="player-info">
+                                                            {histo.player}
                                                         </div>
                                                     </div>
                                                 )

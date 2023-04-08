@@ -24,6 +24,7 @@ type HistoricItem = {
     guessedColor: string;
     correctColor: string;
     timeScore: number;
+    player?: string;
 }
 
 export const GameContext = createContext({} as GameContextData);
