@@ -21,7 +21,7 @@ function Main() {
     const { historic, setHistoric, highScore, setHighScore, resetHistoric, levelGame } = useContext(GameContext);
 
     useEffect(() => {
-        let intervalId: number;
+        let intervalId: ReturnType<typeof setInterval>;
 
         if (isRunning) {
             if (timer > 0) {
@@ -170,6 +170,7 @@ function Main() {
                             isRunning ? { display: "none" } : { display: "block" }
                         }
                         onClick={() => startGame()}
+                        data-testid="start-game"
                     >
                         Start
                     </button>
