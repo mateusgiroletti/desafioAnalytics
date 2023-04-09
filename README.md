@@ -37,7 +37,7 @@
     É gerado a cor a ser "adivinhada", com base na dificuldade do jogo, é adicionando mais opções, nivel fácil são inserido 2 opções, medio 3 e difícil 4, essas cores são adicionada ao um array juntamente com a cor correta, totalizando 3|4|5.<br>
     Quando clicado em uma das opções o jogo irá fazer a verificação se a escolha está correta, durante esse processo é desabilitado os botões de escolha (para prevenir duplos cliques) e ele desaparece da tela, através de um controle de estado do react (false|true).<br>
     Caso a escolha seja correta é incrementado no placar atual cinco pontos, caso esteja incorreta é diminuído um ponto. Caso o tempo termine (chegue a zero) ele perde dois pontos.<br>
-    Após essa verificação é inserido no histórico o resultado da roda, com informação da cor escolhida, qual era a correta, o tempo que ele demorou para escolher e qual o seu nickname.<br>
+    Após essa verificação é inserido no histórico o resultado da roda, com informação da cor escolhida, qual era a correta, o tempo que ele demorou para escolher e qual o jogador (apelido).<br>
     Por fim é passado para a próxima rodada, ou seja, o tempo é reiniciado e novas cores são geradas. Assim o jogo é infinito, possibilitando resultados negativos.
 </p>
 
@@ -48,10 +48,29 @@
     Mudar o apelido do jogador e o de mudar a dificuldade do jogo, que são acionadas através do componente modal.
 </p>
 
+### Componente Modal
+
+<p align="justify">
+    Componente usado quando o usuario seleciona a opção de alterar apelido ou alterar a dificuldade da pagina.
+</p>
+
+<p align="center">
+    <img src="./.github/prints/modal_1.png" width="1000">
+    <img src="./.github/prints/modal_2.png" width="1000">
+</p>
+
 ## Context API
 
 <p align="justify">
-
+    Foi criado o gameContext onde é armazenado os estados que são compartilhados entre os componentes. A seguir é listado quais as informações e funções compartilhadas. Algumas das informações são salvas no local storage, assim mesmo que seja atualizado a página ou reaberto as informações são mantidas.<br>
+    <ul>
+        <li>Informação/função de armazenar no histórico. Está informação é salva no local storage.</li>
+        <li>Informação/função de recorde. Está informação é salva no local storage.</li>
+        <li>Informação/função do apelido. Está informação é salva no local storage.</li>
+        <li>Informação/função da dificuldade do jogo. Está informação é salva no local storage.</li>
+        <li>Função para apagar todos os dados referente a histórico e recorde do jogo.</li>
+        <li>Função para manipular abertura e fechamento do componente Modal.</li>
+    </ul>
 </p>
 
 ## Tecnologias utilizadas
@@ -65,7 +84,7 @@
 </ul>
 
 ## Como Rodar o projeto
-É necessario o docker instalado na maquina para executar o projeto, mas tambem é possivel executar apenas com node instalado na maquina.
+É recomendado estar com o docker instalado na maquina para executar o projeto, mas tambem é possivel executar apenas com node, instalando as dependencias e rodando o comando: ``` npm ci && npm run dev ```.
 
 Clone este projeto em um diretório e mude para o diretório frontend:
 
