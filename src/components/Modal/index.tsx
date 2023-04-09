@@ -20,7 +20,7 @@ function Modal({ children, modalTitle }: ModalProps) {
                 id="my-modal"
                 style={modal ? { display: "block" } : { display: "none" }}
             >
-                <div onClick={toggleModal} className="overlay"></div>
+                <div onClick={() => toggleModal()} className="overlay"></div>
                 <div className="modal-container">
                     <div className="modal-title">
                         <h2>{modalTitle}</h2>
