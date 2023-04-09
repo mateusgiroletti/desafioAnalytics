@@ -76,7 +76,7 @@ function Main() {
             });
         }
 
-        // colorsArray.sort(() => Math.random() - 0.5);
+        colorsArray.sort(() => Math.random() - 0.5);
 
         setColors(colorsArray);
     }
