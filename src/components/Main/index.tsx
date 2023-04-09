@@ -45,6 +45,8 @@ function Main() {
                 }, 1000);
             }
 
+            checkHighScore();
+
         }
 
         return () => clearInterval(intervalId);
@@ -66,7 +68,7 @@ function Main() {
             "correct": true
         });
 
-        for (let index = 0; index < levelGame; index++) {
+        for (let index = 0; index < Number(levelGame); index++) {
             const randomColor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0");
             colorsArray.push({
                 "hex": randomColor,
@@ -74,7 +76,7 @@ function Main() {
             });
         }
 
-        colorsArray.sort(() => Math.random() - 0.5);
+        // colorsArray.sort(() => Math.random() - 0.5);
 
         setColors(colorsArray);
     }
@@ -90,10 +92,6 @@ function Main() {
 
         if (color.correct) {
             setScore(prev => prev += 5);
-
-            if (score > highScore) {
-                setHighScore(score);
-            }
         } else {
             setScore(prev => prev -= 1);
         }
@@ -115,6 +113,12 @@ function Main() {
         setFilled(100);
         setScore(0);
         setDisabledButton(true);
+    }
+
+    function checkHighScore() {
+        if (score > highScore) {
+            setHighScore(score);
+        }
     }
 
     return (
