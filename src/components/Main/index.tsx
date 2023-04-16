@@ -49,8 +49,6 @@ function Main() {
 
         }
 
-        console.log("renderizou");
-
         return () => clearInterval(intervalId);
 
     }, [timer, isRunning]);
