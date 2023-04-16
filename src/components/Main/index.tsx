@@ -18,7 +18,7 @@ function Main() {
     const [score, setScore] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
 
-    const { historic, setHistoric, highScore, setHighScore, resetHistoric, levelGame, nickname } = useContext(GameContext);
+    const { setHistoric, highScore, setHighScore, resetHistoric, levelGame, nickname } = useContext(GameContext);
 
     useEffect(() => {
         let intervalId: ReturnType<typeof setInterval>;
@@ -26,15 +26,15 @@ function Main() {
         if (isRunning) {
             if (timer > 0) {
                 intervalId = setInterval(() => {
-                    setTimer(prev => prev -= 1);
-                    setFilled(prev => prev -= 3.33);
+                    setTimer(prevState => prevState -= 1);
+                    setFilled(prevState => prevState -= 3.33);
                 }, 1000);
             }
 
             if (timer === 0) {
                 if (!disabledButton) {
                     setDisabledButton(true);
-                    setScore(prev => prev -= 2);
+                    setScore(prevState => prevState -= 2);
                 }
 
                 intervalId = setInterval(() => {
@@ -48,6 +48,8 @@ function Main() {
             checkHighScore();
 
         }
+
+        console.log("renderizou");
 
         return () => clearInterval(intervalId);
 
@@ -91,9 +93,9 @@ function Main() {
         setDisabledButton(true);
 
         if (color.correct) {
-            setScore(prev => prev += 5);
+            setScore(prevState => prevState += 5);
         } else {
-            setScore(prev => prev -= 1);
+            setScore(prevState => prevState -= 1);
         }
 
         const newHistoric = {
@@ -103,7 +105,11 @@ function Main() {
             "player": nickname ?? null
         };
 
-        setHistoric([newHistoric, ...historic]);
+        setHistoric(prevState => [
+            newHistoric,
+            ...prevState
+        ]);
+
         setTimer(0);
     }
 

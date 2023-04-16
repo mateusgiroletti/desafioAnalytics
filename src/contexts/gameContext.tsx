@@ -20,7 +20,7 @@ type GameContextData = {
     setLevelGame: () => void;
 }
 
-type HistoricItem = {
+export type HistoricItem = {
     guessedColor: string;
     correctColor: string;
     timeScore: number;
@@ -66,7 +66,9 @@ export function GameProvider({ children }: GameProviderProps) {
     }
 
     function toggleModal() {
-        setModal(!modal);
+        setModal((prevState) => (
+            !prevState ? true : false
+        ));
     }
 
     return (
