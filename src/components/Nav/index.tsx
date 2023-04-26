@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
-import "./styles.css";
 import { GameContext } from "../../contexts/gameContext";
+
 import Modal from "../Modal";
+
+import { default as stylesModal } from "../Modal/styles.module.css";
+import styles from "./styles.module.css";
 
 function Nav() {
     const [typeModal, setTypeModal] = useState("");
@@ -15,7 +18,7 @@ function Nav() {
     return (
         <>
             <nav>
-                <div className="setting">
+                <div className={styles.setting}>
                     <button onClick={() => resetAllData()}>Reset All Data</button>
                     <button onClick={() => handleModal("nickname")}>Change Nickname</button>
                     <button onClick={() => handleModal("levelGame")}>Change Level</button>
@@ -39,7 +42,7 @@ function Nav() {
                     </Modal >
                 ) : (
                     <Modal modalTitle="Change Level Game">
-                        <div className="select-level-game">
+                        <div className={stylesModal.selectLevelGame}>
                             <label htmlFor="level-game">Level Game</label>
                             <select
                                 id="level-game"

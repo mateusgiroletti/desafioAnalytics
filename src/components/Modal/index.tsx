@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { GameContext } from "../../contexts/gameContext";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
 type ModalProps = {
     children: JSX.Element;
@@ -16,16 +16,16 @@ function Modal({ children, modalTitle }: ModalProps) {
     return ReactDOM.createPortal(
         <>
             <div
-                className="modal"
+                className={styles.modal}
                 id="my-modal"
                 style={modal ? { display: "block" } : { display: "none" }}
             >
-                <div onClick={() => toggleModal()} className="overlay"></div>
-                <div className="modal-container">
-                    <div className="modal-title">
+                <div onClick={() => toggleModal()} className={styles.overlay}></div>
+                <div className={styles.modalContainer}>
+                    <div className={styles.modalTitle}>
                         <h2>{modalTitle}</h2>
                     </div>
-                    <div className="modal-content">
+                    <div className={styles.modalContent}>
                         {children}
                         <button onClick={() => toggleModal()}>Save</button>
                     </div>

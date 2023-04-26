@@ -1,0 +1,37 @@
+aside {
+    max-width: 22rem;
+    background-color: #eceff5;
+}
+
+.asideHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.asideHeader h1 {
+    color: #48525d;
+    font-weight: bold;
+}
+
+.historicInformation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #48525d;
+    border-top: 3px solid #dbdfe6;
+    margin-left: 2px;
+}
+
+.historicInformation span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid #dbdfe6;
+    border-bottom: 3px solid #dbdfe6;
+    height: 3rem;
+    width: 15rem;
+    padding: 1rem;
+}

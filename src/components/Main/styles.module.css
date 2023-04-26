@@ -15,7 +15,7 @@ main {
     font-weight: bold;
 }
 
-.main-informations {
+.mainInformations {
     display: flex;
     align-items: center;
     width: 25rem;
@@ -26,7 +26,7 @@ main {
     border-radius: 10px;
 }
 
-.main-informations .remaning-time {
+.mainInformations .remaningTime {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,16 +35,16 @@ main {
     margin: 2rem;
 }
 
-.main-informations .remaning-time span {
+.mainInformations .remaningTime span {
     color: #687481;
     font-weight: bold;
 }
 
-.main-informations .remaning-time span:first-child {
+.mainInformations .remaningTime span:first-child {
     padding-bottom: 1rem;
 }
 
-.main-informations .button-restart {
+.mainInformations .buttonRestart {
     height: 100%;
     width: 5rem;
     display: flex;
@@ -56,11 +56,11 @@ main {
     font-size: 0.8rem;
 }
 
-.main-informations .button-restart:hover {
+.mainInformations .buttonRestart:hover {
     filter: brightness(0.8);
 }
 
-.main-informations .score-information {
+.mainInformations .scoreInformation {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -68,52 +68,52 @@ main {
     font-weight: bold;
 }
 
-.main-informations .score-information .high-score {
+.mainInformations .scoreInformation .highScore {
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 2px solid #979fa9;
 }
 
-.main-informations .score-information .high-score span {
+.mainInformations .scoreInformation .highScore span {
     max-width: 5rem;
 }
 
-.main-informations .score-information .score {
+.mainInformations .scoreInformation .score {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 0.5rem;
 }
 
-.main-informations .score-information .score :nth-child(2) {
+.mainInformations .scoreInformation .score :nth-child(2) {
     margin-left: 2rem;
 }
 
-.select-color {
+.selectColor {
     display: flex;
     flex-direction: column;
     width: 25rem;
 }
 
-.select-color .time-bar {
+.selectColor .timeBar {
     height: 0.5rem;
     background: #e5e9f1;
 }
 
-.select-color .color-to-guess {
+.selectColor .colorToGuess {
     height: 25rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.select-color .color-to-guess .color {
+.selectColor .colorToGuess .color {
     height: 100%;
     width: 100%;
 }
 
-.select-color .color-to-guess .button-start {
+.selectColor .colorToGuess .buttonStart {
     position: absolute;
     width: 10rem;
     height: 3rem;
@@ -123,11 +123,11 @@ main {
     font-weight: bold;
 }
 
-.select-color .color-to-guess .button-start:hover {
+.selectColor .colorToGuess .buttonStart:hover {
     filter: brightness(0.8);
 }
 
-.color-options {
+.colorOptions {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -139,7 +139,7 @@ main {
     max-width: 25rem;
 }
 
-.color-options .button-option {
+.colorOptions .buttonOption {
     width: 5rem;
     height: 3rem;
     border: 2px solid #687481;
@@ -149,6 +149,6 @@ main {
     text-transform: uppercase;
 }
 
-.color-options .button-option:hover {
+.colorOptions .buttonOption:hover {
     filter: brightness(0.8);
 }

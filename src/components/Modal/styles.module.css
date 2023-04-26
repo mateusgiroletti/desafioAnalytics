@@ -13,7 +13,7 @@
     background: rgba(49, 49, 49, 0.8);
 }
 
-.modal-container {
+.modalContainer {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -26,32 +26,32 @@
     min-width: 20rem;
 }
 
-.modal-title {
+.modalTitle {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
 }
 
-.modal-title h2 {
+.modalTitle h2 {
     color: #687481;
     font-weight: bold;
 }
 
-.modal-content {
+.modalContent {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.modal-content label {
+.modalContent label {
     padding: 1rem;
     color: #687481;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-.modal-content input {
+.modalContent input {
     height: 44px;
     padding: 0 15px;
     color: #687481;
@@ -61,11 +61,11 @@
     border-radius: 0.5rem;
 }
 
-.modal-content .select-level-game {
+.modalContent .selectLevelGame {
     margin-bottom: 1rem;
 }
 
-.modal-content .select-level-game select {
+.modalContent .selectLevelGame select {
     width: 10rem;
     padding: 0.5rem;
     border: 2px solid #687481;
@@ -75,13 +75,13 @@
     font-size: 1rem;
 }
 
-.modal-content .select-level-game select option {
+.modalContent .selectLevelGame select option {
     color: #687481;
     font-weight: bold;
     font-size: 1rem;
 }
 
-.modal-content button {
+.modalContent button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,6 +93,6 @@
     font-weight: bold;
 }
 
-.modal-content button:hover {
+.modalContent button:hover {
     filter: brightness(0.8);
 }

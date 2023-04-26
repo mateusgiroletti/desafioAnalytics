@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../contexts/gameContext";
 
-import "./styles.css";
+import styles from "./styles.module.css";
 
 const TIME_GAME = 30;
 
@@ -127,32 +127,32 @@ function Main() {
 
     return (
         <main>
-            <div className="title">
+            <div className={styles.title}>
                 <h1>Guess the color</h1>
             </div>
 
-            <div className="main-informations">
-                <div className="remaning-time">
+            <div className={styles.mainInformations}>
+                <div className={styles.remaningTime}>
                     <span>REMAINING TIME (s)</span>
                     <span>{timer}</span>
                 </div>
 
-                <button className="button-restart" onClick={() => restarGame()}>RESTART</button>
+                <button className={styles.buttonRestart} onClick={() => restarGame()}>RESTART</button>
 
-                <div className="score-information">
-                    <div className="high-score">
+                <div className={styles.scoreInformation}>
+                    <div className={styles.highScore}>
                         <span>HIGH SCORE</span>
                         <span>{highScore}</span>
                     </div>
-                    <div className="score">
+                    <div className={styles.score}>
                         <span>SCORE</span>
                         <span>{score}</span>
                     </div>
                 </div>
             </div>
 
-            <div className="select-color">
-                <div className="time-bar">
+            <div className={styles.selectColor}>
+                <div className={styles.timeBar}>
                     <div style={{
                         height: "100%",
                         width: `${filled}%`,
@@ -164,14 +164,14 @@ function Main() {
                 </div>
 
 
-                <div className="color-to-guess" >
-                    <div className="color" style={
+                <div className={styles.colorToGuess}>
+                    <div className={styles.color} style={
                         isRunning ?
                             { opacity: "1", background: `#${getCorrectColor()}` } :
                             { opacity: "0.30", background: "#f9bc6b" }
                     }></div>
                     <button
-                        className="button-start"
+                        className={styles.buttonStart}
                         style={
                             isRunning ? { display: "none" } : { display: "block" }
                         }
@@ -185,13 +185,13 @@ function Main() {
             </div>
 
             {!disabledButton && (
-                <div className="color-options">
+                <div className={styles.colorOptions}>
                     {
                         colors.map((color) => {
                             return (
                                 <button
                                     key={color.hex}
-                                    className="button-option"
+                                    className={styles.buttonOption}
                                     onClick={() => checkAnswer(color)}
                                     disabled={disabledButton}
                                 >
